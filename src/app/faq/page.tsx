@@ -149,7 +149,7 @@ export default function FaqPage() {
           </div>
 
           <div className="mt-8 text-center text-white/40 text-sm">
-            &copy; {new Date().getFullYear()} lowest. All Rights Reserved.
+            &copy; 2024-2026 lowest. All Rights Reserved.
           </div>
         </div>
 
