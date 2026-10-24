@@ -26,6 +26,9 @@ export default function StatusPage() {
   const [statusState, setStatusState] = useState<'operational' | 'degraded' | 'down'>('operational')
   const [usingCachedData, setUsingCachedData] = useState(false)
 
+  // Umbral máximo de latencia en ms para considerar el servicio "en verde"
+  const LATENCY_THRESHOLD = 250; 
+
   useEffect(() => {
     const fetchStats = async () => {
       try {
@@ -67,8 +70,8 @@ export default function StatusPage() {
         if (usingCachedData || shardsData.length === 0) {
           setStatusState('down');
         } else if (outagesData.some(o => o.status !== 'resolved') || 
-                  totalStats.averageLatency > 80 || 
-                  shardsData.some(shard => shard.latency > 80)) {
+                  totalStats.averageLatency > LATENCY_THRESHOLD || 
+                  shardsData.some(shard => shard.latency > LATENCY_THRESHOLD)) {
           setStatusState('degraded');
         } else {
           setStatusState('operational');
@@ -257,7 +260,7 @@ export default function StatusPage() {
                       <AlertTriangle className="h-5 w-5 text-red-500" />
                     ) : (
                       getStatusIcon(
-                        stats.averageLatency > 80 || shards.some(shard => shard.latency > 80)
+                        stats.averageLatency > LATENCY_THRESHOLD || shards.some(shard => shard.latency > LATENCY_THRESHOLD)
                           ? 'degraded'
                           : 'operational'
                       )
@@ -266,7 +269,7 @@ export default function StatusPage() {
                   <p className="text-white/70 text-sm md:text-base">
                     {usingCachedData 
                       ? 'API connection issues' 
-                      : stats.averageLatency > 80 || shards.some(shard => shard.latency > 80)
+                      : stats.averageLatency > LATENCY_THRESHOLD || shards.some(shard => shard.latency > LATENCY_THRESHOLD)
                         ? 'API experiencing high latency'
                         : 'All endpoints responding normally'}
                   </p>
@@ -387,8 +390,8 @@ export default function StatusPage() {
                           <div className="flex justify-between items-center mb-2">
                             <h3 className="font-medium">Shard #{shard.shard}</h3>
                             <div className={`w-2 h-2 rounded-full ${
-                              shard.latency < 80 ? 'bg-green-500' : 
-                              shard.latency < 200 ? 'bg-yellow-500' : 
+                              shard.latency < 250 ? 'bg-green-500' : 
+                              shard.latency < 400 ? 'bg-yellow-500' : 
                               'bg-red-500'
                             }`}></div>
                           </div>
@@ -396,8 +399,8 @@ export default function StatusPage() {
                             <div>
                               <p className="text-white/60">Latency</p>
                               <p className={`font-medium ${
-                                shard.latency < 80 ? 'text-white' : 
-                                shard.latency < 200 ? 'text-yellow-500' : 
+                                shard.latency < 250 ? 'text-white' : 
+                                shard.latency < 400 ? 'text-yellow-500' : 
                                 'text-red-500'
                               }`}>{shard.latency}ms</p>
                             </div>
@@ -471,4 +474,3 @@ export default function StatusPage() {
     </PageTransition>
   )
 }
-
