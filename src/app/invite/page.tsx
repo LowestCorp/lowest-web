@@ -41,7 +41,7 @@ export default function InvitePage() {
           <div className="container mx-auto flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
               <RotatingMoonLogo size={24} />
-              <span className="font-bold text-xl">madafakinbot</span>
+              <span className="font-bold text-xl">lowest</span>
             </Link>
             <nav className="hidden md:flex items-center gap-6">
               <Link href="/" className="hover:text-white/80 transition-colors">
@@ -69,7 +69,7 @@ export default function InvitePage() {
               transition={{ duration: 0.5 }}
               className="text-xl md:text-2xl font-bold mb-4 md:mb-6"
             >
-              Add madafakinbot to your server
+              Add lowest to your server
             </motion.h1>
 
             <motion.div
@@ -106,7 +106,7 @@ export default function InvitePage() {
                 </div>
                 <div>
                   <h3 className="font-medium text-sm md:text-base">Customizable</h3>
-                  <p className="text-xs md:text-sm text-white/70">Configure madafakinbot to fit your server's needs</p>
+                  <p className="text-xs md:text-sm text-white/70">Configure lowest to fit your server's needs</p>
                 </div>
               </motion.div>
             </motion.div>
@@ -119,7 +119,7 @@ export default function InvitePage() {
               <Button className="w-full bg-[#5865F2] hover:bg-[#4752c4] text-white">Add to Discord</Button>
 
               <p className="mt-4 text-xs md:text-sm text-white/60">
-                By adding madafakinbot, you agree to our{" "}
+                By adding lowest, you agree to our{" "}
                 <Link href="/terms" className="text-primary hover:underline">
                   Terms of Service
                 </Link>

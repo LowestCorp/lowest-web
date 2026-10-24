@@ -18,7 +18,7 @@ export function StatusImage({
   const imgRef = useRef<HTMLImageElement>(null);
   
   // Format the API URL properly
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.madafakinbot.rocks";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.lowest.pro";
   const formattedApiUrl = apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;
   const imageUrl = `${formattedApiUrl}/status/image?t=${timestamp}`;
   

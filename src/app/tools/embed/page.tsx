@@ -965,7 +965,7 @@ const CodeOutput: React.FC<{
       <div className="mt-4 bg-blue-900/20 border border-blue-500/20 rounded-md p-3 flex items-start gap-2">
         <AlertCircle className="h-4 w-4 text-blue-400 mt-0.5 flex-shrink-0" />
         <div className="text-xs text-blue-300">
-          <p>Use this code with madafakinbot bot commands that support embeds, such as:</p>
+          <p>Use this code with lowest bot commands that support embeds, such as:</p>
           <ul className="list-disc pl-4 mt-1 space-y-1">
             <li>
               <code className="bg-blue-900/30 px-1 py-0.5 rounded">,embed {"{embed_code}"}</code>
@@ -1071,7 +1071,7 @@ export default function EmbedBuilderPage() {
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <RotatingMoonLogo size={24} />
-            <span className="font-bold text-xl">madafakinbot</span>
+            <span className="font-bold text-xl">lowest</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (

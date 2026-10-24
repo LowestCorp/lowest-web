@@ -1,4 +1,4 @@
-const CACHE_LOCK_KEY = 'madafakinbot_cache_lock';
+const CACHE_LOCK_KEY = 'lowest_cache_lock';
 const CACHE_LOCK_DURATION = 10000;
 
 class GlobalCacheManager {
@@ -6,7 +6,7 @@ class GlobalCacheManager {
     private static instance: GlobalCacheManager;
 
     private constructor() {
-        this.channel = new BroadcastChannel('madafakinbot_cache_channel');
+        this.channel = new BroadcastChannel('lowest_cache_channel');
     }
 
     public static getInstance(): GlobalCacheManager {

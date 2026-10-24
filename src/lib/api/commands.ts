@@ -2,8 +2,8 @@ import { globalCache } from './globalCache';
 
 // Cache duration: 24 hours in milliseconds
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
-const COMMANDS_CACHE_KEY = 'madafakinbot_commands_data';
-const API_ENDPOINT = 'https://api.madafakinbot.rocks/raw';
+const COMMANDS_CACHE_KEY = 'lowest_commands_data';
+const API_ENDPOINT = 'https://api.lowest.pro/raw';
 
 // Interface for the API response
 export interface CommandData {

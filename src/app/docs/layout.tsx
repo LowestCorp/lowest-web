@@ -98,7 +98,7 @@ export default function DocsLayout({
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <RotatingMoonLogo size={24} />
-            <span className="font-bold text-xl">madafakinbot</span>
+            <span className="font-bold text-xl">lowest</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             {navItems.map((item) => (

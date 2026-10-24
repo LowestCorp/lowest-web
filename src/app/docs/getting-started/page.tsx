@@ -6,24 +6,24 @@ export default function GettingStartedPage() {
   return (
     <PageTransition>
       <div className="bg-secondary/10 rounded-lg p-4 md:p-6 doc-content text-sm md:text-base">
-        <h1>Getting Started with madafakinbot</h1>
+        <h1>Getting Started with lowest</h1>
 
         <p>
-          This guide will help you get started with madafakinbot, covering the basic setup and essential commands
+          This guide will help you get started with lowest, covering the basic setup and essential commands
           to make the most out of the bot in your Discord server.
         </p>
 
         <h2>Basic Information</h2>
         
         <p>
-          madafakinbot's default prefix is set to <code>,</code> (comma) and/or pinging the bot. All commands can be triggered using this prefix
+          lowest's default prefix is set to <code>,</code> (comma) and/or pinging the bot. All commands can be triggered using this prefix
           followed by the command name.
         </p>
 
         <div className="bg-primary/10 border border-primary/20 rounded-md p-4 my-4">
           <p className="font-medium mb-2">Important Setup Note:</p>
           <p>
-            Ensure the bot's role is within the guild's top 5 roles for madafakinbot to function correctly.
+            Ensure the bot's role is within the guild's top 5 roles for lowest to function correctly.
             This is necessary for proper permission handling.
           </p>
         </div>
@@ -45,7 +45,7 @@ export default function GettingStartedPage() {
         <h2>Essential Setup Commands</h2>
         
         <p>
-          Here are some important commands to help you set up madafakinbot in your server:
+          Here are some important commands to help you set up lowest in your server:
         </p>
 
         <div className="space-y-4 my-4">
@@ -73,13 +73,13 @@ export default function GettingStartedPage() {
         <h2>Next Steps</h2>
         
         <p>
-          After completing the basic setup, explore more of madafakinbot's features through our documentation.
+          After completing the basic setup, explore more of lowest's features through our documentation.
           You can also use <code>,help</code> to see a list of all available commands directly in Discord.
         </p>
         
         <p>
           If you need assistance, join our{" "}
-          <a href="https://discord.gg/madafakinbotbot" className="text-primary hover:underline">
+          <a href="https://discord.gg/lowestbot" className="text-primary hover:underline">
             support server
           </a>{" "}
           where our team can help you with any questions.

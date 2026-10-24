@@ -10,42 +10,42 @@ export default function FAQPage() {
         <h1>Frequently Asked Questions</h1>
 
         <p>
-          Here are answers to some of the most common questions about madafakinbot.
+          Here are answers to some of the most common questions about lowest.
         </p>
 
-        <h2>"I thought madafakinbot was free / madafakinbot is paid now?"</h2>
+        <h2>"I thought lowest was free / lowest is paid now?"</h2>
 
         <p>
-          No, madafakinbot is not paid. The bot remains completely free to use with all its core features.
+          No, lowest is not paid. The bot remains completely free to use with all its core features.
           You can optionally pay for premium features if you want additional functionality, but this is not required
           to use the bot.
         </p>
 
-        <h2>"madafakinbot is attacking our server/raiding"</h2>
+        <h2>"lowest is attacking our server/raiding"</h2>
 
         <p>
-          This is very unlikely. What you're experiencing is most likely someone copying the madafakinbot bot to raid your server.
+          This is very unlikely. What you're experiencing is most likely someone copying the lowest bot to raid your server.
           As part of Discord's new verification policy, any bot can get verified just by creating one. This means bad actors
           can create bots that look like legitimate ones.
         </p>
 
         <p>
-          Always verify that you're inviting the official madafakinbot bot by using our official website links or joining our
+          Always verify that you're inviting the official lowest bot by using our official website links or joining our
           support server for the authentic invite link.
         </p>
 
-        <h2>"How do I know if I'm using the real madafakinbot?"</h2>
+        <h2>"How do I know if I'm using the real lowest?"</h2>
 
         <p>
-          The official madafakinbot bot can only be invited from our website or official support server. Always check the bot ID
-          and verify that you're using commands with our documented prefix. If you're suspicious about a bot claiming to be madafakinbot,
+          The official lowest bot can only be invited from our website or official support server. Always check the bot ID
+          and verify that you're using commands with our documented prefix. If you're suspicious about a bot claiming to be lowest,
           join our support server and ask for verification.
         </p>
 
         <h2>"What features are included in the free version?"</h2>
 
         <p>
-          The free version of madafakinbot includes all core functionality.
+          The free version of lowest includes all core functionality.
         </p>
 
         <h2>"What additional features do I get with premium?"</h2>

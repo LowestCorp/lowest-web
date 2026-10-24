@@ -2379,7 +2379,7 @@
     },
     {
       "name": "clearsnipe",
-      "brief": "Clear all deleted messages from madafakinbot",
+      "brief": "Clear all deleted messages from lowest",
       "example": ",clearsnipe"
     },
     {

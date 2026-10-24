@@ -36,7 +36,7 @@ export default function ToolsPage() {
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <RotatingMoonLogo size={24} />
-            <span className="font-bold text-xl">madafakinbot</span>
+            <span className="font-bold text-xl">lowest</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/" className="hover:text-white/80 transition-colors">
@@ -73,7 +73,7 @@ export default function ToolsPage() {
 
           <div className="mb-8">
             <h1 className="text-2xl md:text-3xl font-bold mb-2">Tools</h1>
-            <p className="text-white/70">Useful tools to help you get the most out of madafakinbot bot</p>
+            <p className="text-white/70">Useful tools to help you get the most out of lowest bot</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">

@@ -6,7 +6,7 @@ import { RotatingMoonLogo } from "@/components/rotating-moon-logo";
 // Generate metadata with a timestamp to prevent caching
 export async function generateMetadata(): Promise<Metadata> {
   const timestamp = Date.now();
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.madafakinbot.rocks";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.lowest.rocks";
   
   // Ensure the API URL doesn't have a trailing slash
   const formattedApiUrl = apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;
@@ -15,25 +15,25 @@ export async function generateMetadata(): Promise<Metadata> {
   const imageUrl = `${formattedApiUrl}/status/image?t=${timestamp}`;
   
   return {
-    title: "System Status - madafakinbot",
-    description: "Check the current status of madafakinbot's services and systems",
+    title: "System Status - lowest",
+    description: "Check the current status of lowest's services and systems",
     openGraph: {
-      title: "madafakinbot - System Status",
-      description: "Check the current status of madafakinbot's services and systems",
+      title: "lowest - System Status",
+      description: "Check the current status of lowest's services and systems",
       images: [
         {
           url: imageUrl,
           width: 800,
           height: 400,
-          alt: "madafakinbot System Status",
+          alt: "lowest System Status",
         },
       ],
       type: "website",
     },
     twitter: {
       card: "summary_large_image",
-      title: "madafakinbot - System Status",
-      description: "Check the current status of madafakinbot's services and systems",
+      title: "lowest - System Status",
+      description: "Check the current status of lowest's services and systems",
       images: [imageUrl],
     },
     // Add refresh metadata to prevent caching
@@ -60,7 +60,7 @@ export default function StatusLayout({
             <div className="flex items-center gap-2">
               <RotatingMoonLogo size={20} />
               <span className="text-sm text-white/70">
-                madafakinbot Status Page
+                lowest Status Page
               </span>
             </div>
             

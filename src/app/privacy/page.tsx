@@ -153,12 +153,12 @@ export default function PrivacyPage() {
             <li>
               <span className="font-semibold">Support Server: </span>
               <a 
-                href="https://discord.gg/madafakinbotbot" 
+                href="https://discord.gg/lowestbot" 
                 className="text-blue-400 hover:text-blue-300 hover:underline transition-colors"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                discord.gg/madafakinbotbot
+                discord.gg/lowestbot
               </a>
             </li>
           </ul>
@@ -242,7 +242,7 @@ export default function PrivacyPage() {
 
           {/* Footer - no animation */}
           <div className="mt-8 text-center text-white/40 text-sm">
-            &copy; 2024 madafakinbot. All Rights Reserved.
+            &copy; 2024 lowest. All Rights Reserved.
           </div>
         </div>
 

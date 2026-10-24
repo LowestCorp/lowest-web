@@ -33,12 +33,12 @@ const TestimonialSection = () => {
     },
     {
       username: "aq.17d",
-      content: "madafakinbot is a very simple and easy to use bot especially its utilities and how those utilities doesn't need any sorts of documentations for their commands.",
+      content: "lowest is a very simple and easy to use bot especially its utilities and how those utilities doesn't need any sorts of documentations for their commands.",
       avatar: "/placeholder.svg?height=40&width=40",
     },
     {
       username: "voidlifter",
-      content: "I love madafakinbot and wrath really good bots tbh",
+      content: "I love lowest and wrath really good bots tbh",
       avatar: "/placeholder.svg?height=40&width=40",
     },
     {
@@ -58,7 +58,7 @@ const TestimonialSection = () => {
     },
     {
       username: "s6th",
-      content: "I enjoy madafakinbot and I hope madafakinbot will last forever.",
+      content: "I enjoy lowest and I hope lowest will last forever.",
       avatar: "/placeholder.svg?height=40&width=40",
     },
     {
@@ -323,7 +323,7 @@ export default function Home() {
             className="mb-6 md:mb-10 relative avatar-glow"
           >
             <div className="w-28 h-28 sm:w-36 sm:h-36 md:w-44 md:h-44 relative rounded-full overflow-hidden border border-white/10">
-              <Image src="/madafakinbot.png" alt="madafakinbot Bot" width={176} height={176} className="object-cover" priority />
+              <Image src="/lowest.png" alt="lowest Bot" width={176} height={176} className="object-cover" priority />
             </div>
           </motion.div>
 
@@ -333,7 +333,7 @@ export default function Home() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-4xl sm:text-5xl md:text-6xl font-bold mb-2 md:mb-3 text-center tracking-tight"
           >
-            madafakinbot
+            lowest
           </motion.h1>
 
           <motion.p
@@ -355,15 +355,10 @@ export default function Home() {
               <NavButton href="/commands" icon={Command} label="cmds" />
             </motion.div>
             <motion.div variants={item}>
-              <NavButton href="https://discord.gg/seiko" icon={MessageSquare} label="discord" />
+              <NavButton href="https://discord.gg/5vSJEVAUHj" icon={MessageSquare} label="discord" />
             </motion.div>
             <motion.div variants={item}>
-              <NavButton 
-                href="#" 
-                icon={FileText} 
-                label="docs (coming soon)" 
-                className="opacity-50 pointer-events-none select-none border-white/[0.02] hover:translate-y-0"
-              />
+              <NavButton href="/docs" icon={FileText} label="docs" />
             </motion.div>
             <motion.div variants={item}>
               <NavButton href="/status" icon={Radio} label="status" />
@@ -372,7 +367,7 @@ export default function Home() {
               <NavButton href="/invite" icon={Share2} label="invite" />
             </motion.div>
             <motion.div variants={item}>
-              <NavButton href="/embed" icon={Shield} label="embed" />
+              <NavButton href="/tools/embed" icon={Shield} label="embed" />
             </motion.div>
           </motion.div>
         </div>

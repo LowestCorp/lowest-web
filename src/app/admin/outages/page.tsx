@@ -60,7 +60,7 @@ export default function OutagesAdminPage() {
       if (storedApiKey) {
         setApiKey(storedApiKey)
         try {
-          const response = await fetch("https://api.madafakinbot.rocks/validate-key", {
+          const response = await fetch("https://api.lowest.pro/validate-key", {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default function OutagesAdminPage() {
     }
     
     try {
-      const response = await fetch("https://api.madafakinbot.rocks/validate-key", {
+      const response = await fetch("https://api.lowest.pro/validate-key", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

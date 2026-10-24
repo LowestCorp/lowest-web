@@ -8,7 +8,7 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "madafakinbot - Discord Bot",
+  title: "lowest - Discord Bot",
   description: "A powerful Discord bot for your server",
   icons: {
     icon: '/favicon.ico',

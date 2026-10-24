@@ -119,7 +119,7 @@ export default function CommandsPage() {
           id: key,
           name: key,
           icon: CATEGORY_ICON_MAP[key] || "Command",
-          description: `${key} commands for the madafakinbot bot`,
+          description: `${key} commands for the lowest bot`,
           commands: cmds.map((cmd: any) => ({
             name: cmd.name,
             description: cmd.brief || "No description available",
@@ -410,7 +410,7 @@ export default function CommandsPage() {
         <div className="container mx-auto flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
             <RotatingMoonLogo size={24} />
-            <span className="font-bold text-xl">madafakinbot</span>
+            <span className="font-bold text-xl">lowest</span>
           </Link>
           <nav className="hidden md:flex items-center gap-6">
             <Link href="/" className="hover:text-white/80 transition-colors">

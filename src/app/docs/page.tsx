@@ -9,20 +9,20 @@ export default function DocsPage() {
         <h1>Introduction</h1>
 
         <p>
-          Welcome to the madafakinbot documentation! This guide will help you understand how to use madafakinbot, a powerful Discord
+          Welcome to the lowest documentation! This guide will help you understand how to use lowest, a powerful Discord
           bot designed to enhance your server experience.
         </p>
 
         <p>
-          madafakinbot provides a wide range of features including moderation tools, utility commands, fun interactions, and
-          much more. Whether you're a server owner, administrator, or member, madafakinbot has something to offer for everyone.
+          lowest provides a wide range of features including moderation tools, utility commands, fun interactions, and
+          much more. Whether you're a server owner, administrator, or member, lowest has something to offer for everyone.
         </p>
 
-        <h2>What is madafakinbot?</h2>
+        <h2>What is lowest?</h2>
 
         <p>
-          madafakinbot is a versatile Discord bot built to help manage and enhance your Discord server. With an intuitive
-          command system and powerful features, madafakinbot makes server management easier while providing entertainment and
+          lowest is a versatile Discord bot built to help manage and enhance your Discord server. With an intuitive
+          command system and powerful features, lowest makes server management easier while providing entertainment and
           utility for all server members.
         </p>
 
@@ -39,15 +39,15 @@ export default function DocsPage() {
         <h2>Getting Started</h2>
 
         <p>
-          To get started with madafakinbot, you'll need to invite the bot to your server. Visit our{" "}
+          To get started with lowest, you'll need to invite the bot to your server. Visit our{" "}
           <a href="/invite" className="text-primary hover:underline">
             invite page
           </a>{" "}
-          to add madafakinbot to your server.
+          to add lowest to your server.
         </p>
 
         <p>
-          Once madafakinbot is in your server, you can use the <code>/help</code> command to see a list of available commands.
+          Once lowest is in your server, you can use the <code>/help</code> command to see a list of available commands.
           Check out the{" "}
           <a href="/docs/getting-started" className="text-primary hover:underline">
             Getting Started
@@ -58,7 +58,7 @@ export default function DocsPage() {
         <h2>Support</h2>
 
         <p>
-          If you need help with madafakinbot or have any questions, you can join our{" "}
+          If you need help with lowest or have any questions, you can join our{" "}
           <a href="https://discord.gg/invite" className="text-primary hover:underline">
             support server
           </a>{" "}
