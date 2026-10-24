@@ -15,25 +15,26 @@ const TestimonialSection = () => {
   const [currentPage, setCurrentPage] = useState(0)
   const [hasAnimated, setHasAnimated] = useState(false)
   const testimonialsPerPage = 6
-  
-  // When component mounts, set hasAnimated to true after a short delay
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setHasAnimated(true)
-    }, 1000) // Wait for initial animations to complete
-    
+    }, 1000)
+
     return () => clearTimeout(timer)
   }, [])
-  
+
   const testimonials = [
     {
       username: "dupression",
-      content: "super awesome bot great community, active updates & fixes, bugs are caught within 5 minutes of contacting any support member",
+      content:
+        "super awesome bot great community, active updates & fixes, bugs are caught within 5 minutes of contacting any support member",
       avatar: "/placeholder.svg?height=40&width=40",
     },
     {
       username: "aq.17d",
-      content: "lowest is a very simple and easy to use bot especially its utilities and how those utilities doesn't need any sorts of documentations for their commands.",
+      content:
+        "lowest is a very simple and easy to use bot especially its utilities and how those utilities doesn't need any sorts of documentations for their commands.",
       avatar: "/placeholder.svg?height=40&width=40",
     },
     {
@@ -48,7 +49,8 @@ const TestimonialSection = () => {
     },
     {
       username: "74hk",
-      content: "reed is an outstanding bot that has quickly become a favorite in our server. Its extensive range of commands covers everything from moderation to fun and utility, making it incredibly versatile and invaluable for server management.",
+      content:
+        "reed is an outstanding bot that has quickly become a favorite in our server. Its extensive range of commands covers everything from moderation to fun and utility, making it incredibly versatile and invaluable for server management.",
       avatar: "/placeholder.svg?height=40&width=40",
     },
     {
@@ -68,7 +70,8 @@ const TestimonialSection = () => {
     },
     {
       username: "rexduct",
-      content: "Great bot I really like it, helps alot great support and easy to use. Im currently using it in 10 of my servers",
+      content:
+        "Great bot I really like it, helps alot great support and easy to use. Im currently using it in 10 of my servers",
       avatar: "/placeholder.svg?height=40&width=40",
     },
   ]
@@ -156,67 +159,136 @@ const TestimonialSection = () => {
   )
 }
 
-// Custom animated counter component with slot machine effect
-const SlotMachineCounter = ({ value, className }: { value: number; className?: string }) => {
-  const prevValue = useRef(value)
-  const isIncreasing = value > prevValue.current
-  const controls = useAnimationControls()
-  const [displayValue, setDisplayValue] = useState(value)
-  const [isAnimating, setIsAnimating] = useState(false)
+// Componente para escribir texto letra por letra (Typewriter)
+const TypewriterText = ({
+  text,
+  speed = 30,
+  delay = 0,
+  onComplete,
+}: {
+  text: string
+  speed?: number
+  delay?: number
+  onComplete?: () => void
+}) => {
+  const [displayedText, setDisplayedText] = useState("")
 
   useEffect(() => {
-    if (value === prevValue.current) return
+    let i = 0
+    const timeout = setTimeout(() => {
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          setDisplayedText(text.substring(0, i + 1))
+          i++
+        } else {
+          clearInterval(interval)
+          if (onComplete) onComplete()
+        }
+      }, speed)
 
-    setIsAnimating(true)
+      return () => clearInterval(interval)
+    }, delay)
 
-    // Generate intermediate values for the slot effect
-    const diff = value - prevValue.current
-    const steps = 8 // Number of intermediate steps
-    const stepSize = diff / steps
+    return () => clearTimeout(timeout)
+  }, [text, speed, delay])
 
-    // Animate through intermediate values
-    let step = 0
-    const interval = setInterval(() => {
-      step++
-      if (step <= steps) {
-        const intermediateValue = Math.round(prevValue.current + stepSize * step)
-        setDisplayValue(intermediateValue)
+  return <span>{displayedText}</span>
+}
+
+// Contador numérico animado (Sube desde 0 hasta el número final de manera muy fluida)
+const SlotMachineCounter = ({
+  value,
+  className,
+  onComplete,
+}: {
+  value: number
+  className?: string
+  onComplete?: () => void
+}) => {
+  const prevValue = useRef(0)
+  const [displayValue, setDisplayValue] = useState(0)
+  const controls = useAnimationControls()
+  const hasTriggeredComplete = useRef(false)
+
+  useEffect(() => {
+    const startValue = prevValue.current
+    const endValue = value
+
+    const duration = 1000 // Duración del conteo en ms
+    const startTime = performance.now()
+
+    const updateNumber = (now: number) => {
+      const elapsed = now - startTime
+      const progress = Math.min(elapsed / duration, 1)
+
+      // Curva de desaceleración suave (easeOutCubic)
+      const easeOut = 1 - Math.pow(1 - progress, 3)
+      const current = Math.round(startValue + (endValue - startValue) * easeOut)
+
+      setDisplayValue(current)
+
+      if (progress < 1) {
+        requestAnimationFrame(updateNumber)
       } else {
-        clearInterval(interval)
-
-        // Final value with bounce effect
-        setDisplayValue(value)
+        prevValue.current = endValue
         controls.start({
-          y: [isIncreasing ? 2 : -2, 0],
-          transition: {
-            type: "spring",
-            stiffness: 300,
-            damping: 10,
-            duration: 0.3,
-          },
+          scale: [1.15, 1],
+          y: [-2, 0],
+          transition: { type: "spring", stiffness: 400, damping: 15 },
         })
 
-        setTimeout(() => {
-          setIsAnimating(false)
-          prevValue.current = value
-        }, 300)
+        if (!hasTriggeredComplete.current) {
+          hasTriggeredComplete.current = true
+          if (onComplete) onComplete()
+        }
       }
-    }, 50) // Speed of slot machine effect
+    }
 
-    return () => clearInterval(interval)
-  }, [value, controls, isIncreasing])
+    requestAnimationFrame(updateNumber)
+  }, [value, controls])
 
   return (
-    <motion.span
-      className={`${className} inline-block`}
-      animate={controls}
-      style={{
-        display: "inline-block",
-        transformOrigin: "center",
-      }}
-    >
+    <motion.span animate={controls} className={`${className} inline-block font-semibold`}>
       {displayValue.toLocaleString()}
     </motion.span>
+  )
+}
+
+// Componente que coordina la escritura del texto y los números animados en secuencia
+const TypewrittenStats = ({ users, servers }: { users: number; servers: number }) => {
+  const [stage, setStage] = useState(0)
+
+  return (
+    <span className="inline-flex flex-wrap items-center justify-center gap-x-1">
+      {/* 1. Escribe "serving " */}
+      <TypewriterText text="serving " speed={35} onComplete={() => setStage(1)} />
+
+      {/* 2. Sube el contador de usuarios desde 0 */}
+      {stage >= 1 && (
+        <SlotMachineCounter
+          value={users}
+          className="text-white font-bold"
+          onComplete={() => setStage(2)}
+        />
+      )}
+
+      {/* 3. Escribe " users across " */}
+      {stage >= 2 && (
+        <TypewriterText text=" users across " speed={35} onComplete={() => setStage(3)} />
+      )}
+
+      {/* 4. Sube el contador de servidores desde 0 */}
+      {stage >= 3 && (
+        <SlotMachineCounter
+          value={servers}
+          className="text-white font-bold"
+          onComplete={() => setStage(4)}
+        />
+      )}
+
+      {/* 5. Escribe " servers" */}
+      {stage >= 4 && <TypewriterText text=" servers" speed={35} />}
+    </span>
   )
 }
 
@@ -298,10 +370,7 @@ export default function Home() {
   ) : error ? (
     <motion.span className="text-red-400">{error}</motion.span>
   ) : (
-    <>
-      serving <SlotMachineCounter value={stats.users} className="text-white" /> users across{" "}
-      <SlotMachineCounter value={stats.servers} className="text-white" /> servers
-    </>
+    <TypewrittenStats users={stats.users} servers={stats.servers} />
   )
 
   return (
@@ -340,7 +409,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.6 }}
-            className="text-white/60 mb-8 md:mb-14 text-center text-base md:text-lg"
+            className="text-white/60 mb-8 md:mb-14 text-center text-base md:text-lg min-h-[28px]"
           >
             {statsText}
           </motion.p>
@@ -371,11 +440,10 @@ export default function Home() {
             </motion.div>
           </motion.div>
         </div>
-        
+
         {/* Testimonials section - separate full-width section below */}
         <TestimonialSection />
       </main>
     </PageTransition>
   )
 }
-

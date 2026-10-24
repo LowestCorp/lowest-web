@@ -9,8 +9,12 @@ import { RotatingMoonLogo } from "@/components/rotating-moon-logo"
 import { MobileMenu } from "@/components/mobile-menu"
 import { usePathname } from "next/navigation"
 
+const INVITE_URL =
+  "https://discord.com/oauth2/authorize?client_id=1449779503546241197"
+
 export default function InvitePage() {
   const pathname = usePathname()
+
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -43,6 +47,7 @@ export default function InvitePage() {
               <RotatingMoonLogo size={24} />
               <span className="font-bold text-xl">lowest</span>
             </Link>
+
             <nav className="hidden md:flex items-center gap-6">
               <Link href="/" className="hover:text-white/80 transition-colors">
                 Home
@@ -57,6 +62,7 @@ export default function InvitePage() {
                 Embed Builder
               </Link>
             </nav>
+
             <MobileMenu items={navItems} />
           </div>
         </header>
@@ -78,35 +84,54 @@ export default function InvitePage() {
               animate="show"
               className="space-y-3 md:space-y-4 mb-6 md:mb-8 text-left"
             >
-              <motion.div variants={item} className="flex items-start gap-3">
+              <motion.div
+                variants={item}
+                className="flex items-start gap-3"
+              >
                 <div className="mt-1 bg-primary/20 rounded-full p-1">
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-sm md:text-base">Powerful moderation</h3>
+                  <h3 className="font-medium text-sm md:text-base">
+                    Powerful moderation
+                  </h3>
                   <p className="text-xs md:text-sm text-white/70">
                     Keep your server safe with advanced moderation tools
                   </p>
                 </div>
               </motion.div>
 
-              <motion.div variants={item} className="flex items-start gap-3">
+              <motion.div
+                variants={item}
+                className="flex items-start gap-3"
+              >
                 <div className="mt-1 bg-primary/20 rounded-full p-1">
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-sm md:text-base">Utility commands</h3>
-                  <p className="text-xs md:text-sm text-white/70">Enhance your server with useful utility commands</p>
+                  <h3 className="font-medium text-sm md:text-base">
+                    Utility commands
+                  </h3>
+                  <p className="text-xs md:text-sm text-white/70">
+                    Enhance your server with useful utility commands
+                  </p>
                 </div>
               </motion.div>
 
-              <motion.div variants={item} className="flex items-start gap-3">
+              <motion.div
+                variants={item}
+                className="flex items-start gap-3"
+              >
                 <div className="mt-1 bg-primary/20 rounded-full p-1">
                   <Check className="h-4 w-4 text-primary" />
                 </div>
                 <div>
-                  <h3 className="font-medium text-sm md:text-base">Customizable</h3>
-                  <p className="text-xs md:text-sm text-white/70">Configure lowest to fit your server's needs</p>
+                  <h3 className="font-medium text-sm md:text-base">
+                    Customizable
+                  </h3>
+                  <p className="text-xs md:text-sm text-white/70">
+                    Configure lowest to fit your server's needs
+                  </p>
                 </div>
               </motion.div>
             </motion.div>
@@ -116,11 +141,25 @@ export default function InvitePage() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.6, duration: 0.3 }}
             >
-              <Button className="w-full bg-[#5865F2] hover:bg-[#4752c4] text-white">Add to Discord</Button>
+              <Button
+                asChild
+                className="w-full bg-[#5865F2] hover:bg-[#4752c4] text-white"
+              >
+                <a
+                  href={INVITE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Add to Discord
+                </a>
+              </Button>
 
               <p className="mt-4 text-xs md:text-sm text-white/60">
                 By adding lowest, you agree to our{" "}
-                <Link href="/terms" className="text-primary hover:underline">
+                <Link
+                  href="/terms"
+                  className="text-primary hover:underline"
+                >
                   Terms of Service
                 </Link>
               </p>
@@ -131,4 +170,3 @@ export default function InvitePage() {
     </PageTransition>
   )
 }
-
