@@ -1,11 +1,10 @@
 import { globalCache } from './globalCache';
 
-// Cache duration: 24 hours in milliseconds
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 const COMMANDS_CACHE_KEY = 'lowest_commands_data';
-const API_ENDPOINT = 'https://api.lowest.pro/raw';
+const API_BASE_URL = process.env.NEXT_PUBLIC_BOT_API || 'https://4o6pqo2k6u.apps.bot-hosting.cloud';
+const API_ENDPOINT = `${API_BASE_URL}/raw`;
 
-// Interface for the API response
 export interface CommandData {
   name: string;
   brief?: string | null;
@@ -16,7 +15,6 @@ export interface CommandData {
   example?: string | null;
 }
 
-// Interface for the static JSON file
 export interface StaticCommandData {
   name: string;
   brief?: string | null;
@@ -31,16 +29,11 @@ export interface StaticCommandsResponse {
   [category: string]: StaticCommandData[];
 }
 
-// Import the static JSON as a fallback
 let staticCommandsData: StaticCommandsResponse;
 
-/**
- * Loads the static commands data as a fallback
- */
 async function loadStaticCommandsData(): Promise<CommandsResponse> {
   if (!staticCommandsData) {
     try {
-      // Dynamic import to avoid bundling this large file unless needed
       const module = await import('@/data/commands.json');
       staticCommandsData = module.default;
     } catch (error) {
@@ -49,7 +42,6 @@ async function loadStaticCommandsData(): Promise<CommandsResponse> {
     }
   }
   
-  // Convert the static data to match the API response format
   const convertedData: CommandsResponse = {};
   
   for (const [category, commands] of Object.entries(staticCommandsData)) {
@@ -67,17 +59,13 @@ async function loadStaticCommandsData(): Promise<CommandsResponse> {
   return convertedData;
 }
 
-/**
- * Fetches command data from the API with caching
- */
 export async function fetchCommands(): Promise<CommandsResponse> {
   return globalCache.withGlobalCache<CommandsResponse>(
     COMMANDS_CACHE_KEY,
     async () => {
       try {
         const response = await fetch(API_ENDPOINT, {
-          // Add a timeout to the fetch request
-          signal: AbortSignal.timeout(5000) // 5 second timeout
+          signal: AbortSignal.timeout(5000)
         });
         
         if (!response.ok) {
@@ -86,23 +74,18 @@ export async function fetchCommands(): Promise<CommandsResponse> {
         
         return await response.json();
       } catch (error) {
-        console.error('Failed to fetch commands from API, using fallback:', error);
+        console.log('Using local commands fallback...');
         
-        // Try to use cached data first
         const cachedData = localStorage.getItem(COMMANDS_CACHE_KEY);
         if (cachedData) {
           try {
             const { data } = JSON.parse(cachedData);
             if (data && Object.keys(data).length > 0) {
-              console.log('Using cached commands data');
               return data;
             }
-          } catch (e) {
-            console.error('Failed to parse cached data:', e);
-          }
+          } catch (e) {}
         }
         
-        // Fall back to static data if no cache or cache parsing failed
         return await loadStaticCommandsData();
       }
     },
@@ -110,9 +93,6 @@ export async function fetchCommands(): Promise<CommandsResponse> {
   );
 }
 
-/**
- * Force refresh the commands data
- */
 export function refreshCommands(): void {
   globalCache.clearCache(COMMANDS_CACHE_KEY);
-} 
+}

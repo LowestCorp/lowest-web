@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation"
 import { getOutages, postOutage, updateOutage, type Outage } from "@/lib/api/shards"
 import { AlertTriangle, CheckCircle, Info, Loader2, Edit, X } from "lucide-react"
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_BOT_API || "https://4o6pqo2k6u.apps.bot-hosting.cloud"
+
 export default function OutagesAdminPage() {
   const router = useRouter()
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -33,10 +35,9 @@ export default function OutagesAdminPage() {
       }
     }
 
-    const interval = setInterval(checkActivity, 60000) // Check every minute
+    const interval = setInterval(checkActivity, 60000)
     const updateActivity = () => setLastActivity(Date.now())
 
-    // Update last activity on user interactions
     window.addEventListener('mousemove', updateActivity)
     window.addEventListener('keydown', updateActivity)
     window.addEventListener('click', updateActivity)
@@ -49,9 +50,8 @@ export default function OutagesAdminPage() {
     }
   }, [isAuthenticated, lastActivity])
 
-  // Sanitize input
   const sanitizeInput = (input: string): string => {
-    return input.replace(/<[^>]*>/g, '') // Remove HTML tags
+    return input.replace(/<[^>]*>/g, '')
   }
   
   useEffect(() => {
@@ -60,7 +60,7 @@ export default function OutagesAdminPage() {
       if (storedApiKey) {
         setApiKey(storedApiKey)
         try {
-          const response = await fetch("https://api.lowest.pro/validate-key", {
+          const response = await fetch(`${API_BASE_URL}/validate-key`, {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
@@ -118,7 +118,7 @@ export default function OutagesAdminPage() {
     }
     
     try {
-      const response = await fetch("https://api.lowest.pro/validate-key", {
+      const response = await fetch(`${API_BASE_URL}/validate-key`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -172,18 +172,6 @@ export default function OutagesAdminPage() {
         throw new Error("Title and description are required")
       }
       
-      if (sanitizedTitle.length > 200) {
-        throw new Error("Title is too long (maximum 200 characters)")
-      }
-      
-      if (sanitizedDescription.length > 5000) {
-        throw new Error("Description is too long (maximum 5000 characters)")
-      }
-      
-      if (sanitizedComponents.length > 20) {
-        throw new Error("Too many components (maximum 20)")
-      }
-      
       const outageData = {
         title: sanitizedTitle,
         description: sanitizedDescription,
@@ -200,7 +188,6 @@ export default function OutagesAdminPage() {
       }
       
       resetForm()
-      
       const updatedOutages = await getOutages(true)
       setOutages(updatedOutages)
     } catch (error) {
@@ -217,7 +204,6 @@ export default function OutagesAdminPage() {
     setStatus(outage.status)
     setComponents(outage.affectedComponents.join(", "))
     setEditingOutageId(outage.id)
-    
     document.getElementById("outage-form")?.scrollIntoView({ behavior: "smooth" })
   }
   
@@ -233,23 +219,17 @@ export default function OutagesAdminPage() {
     try {
       return new Date(dateString).toLocaleString()
     } catch (error) {
-      console.error("Invalid date:", error)
       return "Invalid date"
     }
   }
   
   const getStatusBadgeClass = (status: Outage["status"]) => {
     switch (status) {
-      case "investigating":
-        return "bg-yellow-500/20 text-yellow-500";
-      case "identified":
-        return "bg-orange-500/20 text-orange-500";
-      case "monitoring":
-        return "bg-blue-500/20 text-blue-500";
-      case "resolved":
-        return "bg-green-500/20 text-green-500";
-      default:
-        return "bg-white/20 text-white";
+      case "investigating": return "bg-yellow-500/20 text-yellow-500";
+      case "identified": return "bg-orange-500/20 text-orange-500";
+      case "monitoring": return "bg-blue-500/20 text-blue-500";
+      case "resolved": return "bg-green-500/20 text-green-500";
+      default: return "bg-white/20 text-white";
     }
   }
   
@@ -401,9 +381,6 @@ export default function OutagesAdminPage() {
                 className="w-full bg-black/50 border border-white/20 rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"
                 placeholder="API, Bot, Database (comma separated)"
               />
-              <p className="text-xs text-white/60 mt-1">
-                Comma-separated list of affected components
-              </p>
             </div>
             
             <div className="pt-2 flex gap-2">
@@ -459,25 +436,11 @@ export default function OutagesAdminPage() {
                     <button
                       onClick={() => handleEdit(outage)}
                       className="p-1 hover:bg-white/10 rounded-md transition-colors"
-                      title="Edit outage"
                     >
                       <Edit className="h-4 w-4" />
                     </button>
                   </div>
                   <p className="text-white/80 text-sm whitespace-pre-line">{outage.description}</p>
-                  
-                  {outage.affectedComponents.length > 0 && (
-                    <div className="mt-3">
-                      <p className="text-xs text-white/60 mb-1">Affected Components:</p>
-                      <div className="flex flex-wrap gap-1">
-                        {outage.affectedComponents.map((component, i) => (
-                          <span key={i} className="text-xs bg-white/10 px-2 py-0.5 rounded-full">
-                            {component}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               ))}
             </div>
@@ -486,4 +449,4 @@ export default function OutagesAdminPage() {
       </div>
     </div>
   )
-} 
+}
