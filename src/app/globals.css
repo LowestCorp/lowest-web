@@ -10,8 +10,11 @@
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    
+    /* Color de tu bot: rgb(105, 73, 144) */
+    --primary: 266 33% 43%;
     --primary-foreground: 0 0% 98%;
+    
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
@@ -22,7 +25,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 5.9% 90%;
     --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --ring: 266 33% 43%; /* Tu color para los anillos de foco */
     --radius: 0.5rem;
   }
 
@@ -33,8 +36,11 @@
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    
+    /* Color del bot en modo oscuro (más claro para que resalte) */
+    --primary: 266 45% 55%;
     --primary-foreground: 240 5.9% 10%;
+    
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
     --muted: 240 3.7% 15.9%;
@@ -45,7 +51,7 @@
     --destructive-foreground: 0 0% 98%;
     --border: 240 3.7% 15.9%;
     --input: 240 3.7% 15.9%;
-    --ring: 240 4.9% 83.9%;
+    --ring: 266 45% 55%;
   }
 }
 
@@ -71,21 +77,21 @@
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(105, 73, 144, 0.4); /* Color del bot con transparencia */
   border-radius: 3px;
   transition: background 0.2s ease;
 }
 
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.3);
+  background: rgba(105, 73, 144, 0.6);
 }
 
 .custom-scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+  scrollbar-color: rgba(105, 73, 144, 0.4) rgba(255, 255, 255, 0.05);
 }
 
-/* Avatar glow effect */
+/* Avatar glow effect - Color del bot */
 .avatar-glow {
   position: relative;
 }
@@ -98,7 +104,7 @@
   width: 100%;
   height: 100%;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle at center, rgba(30, 64, 88, 0.3), transparent 70%);
+  background: radial-gradient(circle at center, rgba(105, 73, 144, 0.3), transparent 70%);
   border-radius: 50%;
   filter: blur(20px);
   z-index: -1;
@@ -122,7 +128,8 @@
 }
 
 .doc-content code {
-  @apply bg-black/30 px-1 py-0.5 rounded text-blue-300 font-mono text-sm;
+  @apply bg-black/30 px-1 py-0.5 rounded font-mono text-sm;
+  color: rgb(105, 73, 144); /* Tu color aquí */
 }
 
 .doc-sidebar-link {
@@ -130,9 +137,9 @@
 }
 
 .doc-sidebar-link.active {
-  @apply bg-blue-500/10 text-blue-400;
+  background-color: rgba(105, 73, 144, 0.1); /* Fondo suave con tu color */
+  color: rgb(105, 73, 144);                /* Texto con tu color */
 }
-
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
