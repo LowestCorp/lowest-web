@@ -8,8 +8,13 @@ import { Toaster } from "@/components/ui/toaster"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "lowest - Discord Bot",
-  description: "A powerful Discord bot for your server",
+  title: "lowest",
+  description: "a free discord bot giving you the resources to create a powerful and versatile community at the tip of your fingers.",
+  openGraph: {
+    title: "lowest",
+    description: "a free discord bot giving you the resources to create a powerful and versatile community at the tip of your fingers.",
+    type: "website",
+  },
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
