@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "lowest",
     description: "a free discord bot giving you the resources to create a powerful and versatile community at the tip of your fingers.",
+    siteName: "lowest.pro",
     type: "website",
   },
   icons: {
