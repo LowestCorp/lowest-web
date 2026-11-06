@@ -2,7 +2,7 @@ import { globalCache } from './globalCache';
 
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 const COMMANDS_CACHE_KEY = 'lowest_commands_data';
-const API_BASE_URL = process.env.NEXT_PUBLIC_BOT_API || 'nc.lynxnodes.es:25578';
+const API_BASE_URL = process.env.NEXT_PUBLIC_BOT_API || 'https://nc.lynxnodes.es:25578';
 const API_ENDPOINT = `${API_BASE_URL}/raw`;
 
 export interface CommandData {

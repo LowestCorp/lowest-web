@@ -241,7 +241,7 @@ export default function TermsPage() {
 
           {/* Footer - no animation */}
           <div className="mt-8 text-center text-white/40 text-sm">
-            &copy; 2024-2026 lowest. All Rights Reserved.
+            &copy; 2026 lowest. All Rights Reserved.
           </div>
         </div>
 
