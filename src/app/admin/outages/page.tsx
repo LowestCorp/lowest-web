@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation"
 import { getOutages, postOutage, updateOutage, type Outage } from "@/lib/api/shards"
 import { AlertTriangle, CheckCircle, Info, Loader2, Edit, X } from "lucide-react"
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_BOT_API || "https://nc.lynxnodes.es:25578"
+const API_BASE_URL = '/api'
 
 export default function OutagesAdminPage() {
   const router = useRouter()

@@ -21,6 +21,15 @@ const nextConfig = {
     parallelServerBuildTraces: true,
     parallelServerCompiles: true,
   },
+
+  async rewrites() {
+    return [
+      {
+        source: '/api/:path*',
+        destination: 'http://nc.lynxnodes.es:25578/:path*',
+      },
+    ]
+  },
 }
 
 mergeConfig(nextConfig, userConfig)
