@@ -6,7 +6,7 @@ import { RotatingMoonLogo } from "@/components/rotating-moon-logo";
 // Generate metadata with a timestamp to prevent caching
 export async function generateMetadata(): Promise<Metadata> {
   const timestamp = Date.now();
-  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.lowest.rocks";
+  const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://api.lowest.pro";
   
   // Ensure the API URL doesn't have a trailing slash
   const formattedApiUrl = apiUrl.endsWith('/') ? apiUrl.slice(0, -1) : apiUrl;

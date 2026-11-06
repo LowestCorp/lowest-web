@@ -21,7 +21,7 @@ interface Outage {
     affectedComponents: string[];
 }
 
-const API_BASE_URL = 'https://4o6pqo2k6u.apps.bot-hosting.cloud';
+const API_BASE_URL = 'nc.lynxnodes.es:25578';
 const CACHE_KEY = 'lowest_shard_data';
 const OUTAGES_CACHE_KEY = 'lowest_outages_data';
 const CACHE_DURATION = 10000; // 10 seconds in milliseconds
